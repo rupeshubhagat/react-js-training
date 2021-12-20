@@ -12,13 +12,31 @@
       crossorigin="anonymous"
     />
     <style>
-      body {
-        background-color: rgba(#000, 0.5);
-        padding: 50px;
-      }
+     body {
+          background-color: rgba(0,0,0, 0.3);
+          padding: 50PX 20px;
+          color: #fff;
+          font-size: 16px;
+        }
     </style>
   </head>
   <body>
+    <h2>Question:  Conducting an Interview , we have a users data in an object find following details:</h2>
+    <ul>
+        <li>-> map : Conducting a test for multiple candidates </li>
+        <li>-> filter : selecting candidates who passed the test 60</li>
+        <li>-> reduce : creating a team from the selected candidates</li>
+    </ul>
+    <h2>Map Result:</h2>
+    <p id="mapResult"></p>
+    <hr>
+    <h2>filter Result:</h2>
+    <p id="filterResult"></p>
+    <hr>
+    <h2>Reduce Result:</h2>
+    <p id="reduceResult"></p>
+    <hr>
+
     <!-- Bootstrap js files -->
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
@@ -49,6 +67,7 @@
         return value.user;
       });
       console.log(mapConductingTestStdList);
+      document.getElementById("mapResult").innerHTML = mapConductingTestStdList;
 
       // -> filter : selecting candidates who passed the test 60
       let passStdList = users.filter((value) => {
@@ -58,9 +77,15 @@
         return value.user;
       });
       console.log(passStdListMap);
+      document.getElementById("filterResult").innerHTML = passStdListMap;
 
       // -> reduce : creating a team from the selected candidates
-      let creatingTeamSelectStd = passStdList.reduce((acc, value) => {});
+      let creatingTeamSelectStd = passStdList.reduce((teamMembers, value) => {
+            teamMembers.push(value.user);
+            return teamMembers;
+      },[]);
+      console.log(creatingTeamSelectStd);
+      document.getElementById("reduceResult").innerHTML = creatingTeamSelectStd;
     </script>
   </body>
 </html>
