@@ -1,0 +1,145 @@
+// Create post list in app compopnet and pass this post list to List Componnent use props concepts.
+
+App.js:
+----
+import logo from "./logo.svg";
+import "./App.css";
+import Home from "./components/Home";
+import Post from "./components/Post";
+function App() {
+  const title = "Welcome to React js tutorial";
+  const postList = [
+    {
+      id: 1,
+      postName: "Post One",
+      postDescription: "This is post Descriptions",
+      postImagePath: "assets/images/user1.png",
+      postAuthor: "xyz",
+      postDate: "24/12/2021",
+    },
+    {
+      id: 2,
+      postName: "Post One",
+      postDescription: "This is post Descriptions",
+      postImagePath: "assets/images/user1.png",
+      postAuthor: "xyz",
+      postDate: "12/12/2021",
+    },
+    {
+      id: 3,
+      postName: "Post Three",
+      postDescription: "This is post Descriptions",
+      postImagePath: "assets/images/user3.png",
+      postAuthor: "xyz",
+      postDate: "21/08/2021",
+    },
+    {
+      id: 4,
+      postName: "Post Four",
+      postDescription: "This is post Descriptions",
+      postImagePath: "assets/images/user4.png",
+      postAuthor: "xyz",
+      postDate: "14/12/2021",
+    },
+    {
+      id: 5,
+      postName: "Post Five",
+      postDescription: "This is post Descriptions",
+      postImagePath: "assets/images/user5.png",
+      postAuthor: "xyz",
+      postDate: "19/12/2021",
+    },
+    {
+      id: 6,
+      postName: "Post Six",
+      postDescription: "This is post Descriptions",
+      postImagePath: "assets/images/user6.png",
+      postAuthor: "xyz",
+      postDate: "24/12/2021",
+    },
+    {
+      id: 7,
+      postName: "Post Seven",
+      postDescription: "This is post Descriptions",
+      postImagePath: "assets/images/user7.png",
+      postAuthor: "xyz",
+      postDate: "23/12/2021",
+    },
+    {
+      id: 8,
+      postName: "Post Eight",
+      postDescription: "This is post Descriptions",
+      postImagePath: "assets/images/user1.png",
+      postAuthor: "xyz",
+      postDate: "7/12/2021",
+    },
+    {
+      id: 9,
+      postName: "Post Nine",
+      postDescription: "This is post Descriptions",
+      postImagePath: "assets/images/user2.png",
+      postAuthor: "xyz",
+      postDate: "23/12/2021",
+    },
+    {
+      id: 10,
+      postName: "Post Ten",
+      postDescription: "This is post Descriptions",
+      postImagePath: "assets/images/user3.png",
+      postAuthor: "xyz",
+      postDate: "24/12/2021",
+    },
+  ];
+  return (
+    <div className="app-component">
+      <h2>{title}</h2>
+      <hr />
+      <Home />
+      <hr />
+      <Post postListProps={postList} />
+      <hr />
+    </div>
+  );
+}
+
+export default App;
+-------------------
+
+// Post Component:
+Post.js:
+
+import React, { Component } from "react";
+class Post extends Component {
+  render() {
+    return (
+      <>
+        <h2>Post Component list:</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Post Name</th>
+              <th>Post Descriptions</th>
+              <th>Image</th>
+              <th>Author</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            {this.props.postListProps.map((post, index) => (
+              <tr key={post.id}>
+                <td>{post.id}</td>
+                <td>{post.postName}</td>
+                <td>{post.postDescription}</td>
+                <td><img src={post.postImagePath} alt="user-image"/></td>
+                <td>{post.postAuthor}</td>
+                <td>{post.postDate}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </>
+    );
+  }
+}
+export default Post;
